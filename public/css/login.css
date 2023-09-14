@@ -1,0 +1,100 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "barlow";
+    justify-content: center;
+}
+h1 {
+    color: white;
+    font-size: 64px;
+    letter-spacing: 1px;
+}
+h2 {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    letter-spacing: 2px;
+}
+.login-2 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 450px;
+    padding: 40px;
+    border: 2px solid whitesmoke;
+    border-radius: 15px;
+    background-color: white;
+    margin: auto;
+
+    /* margin:auto; */
+}
+.login {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+input {
+    margin: 20px 0px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: whitesmoke;
+    border: 1px;
+    width: 360px;
+    width: 100%;
+}
+.button {
+    height: 40px;
+    background-color: #71d8a6;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    margin: 10px 0px 0px 0px;
+    padding-top: 0px;
+    width: 100%;
+}
+.button:hover {
+    background-color: #4f9975;
+    color: white;
+}
+
+.logo {
+    justify-content: center;
+    display: flex;
+    margin-top: 70px;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    margin: 50px 0px 0px 0px;
+}
+
+.button1 {
+    margin: 20px 2px 0px 2px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 35px;
+    border-radius: 6px;
+    color: white;
+    background-color: #71d8a6;
+    border: none;
+}
+.button1:hover {
+    background-color: #4f9975;
+    color: white;
+}
+
+button.button1 {
+    padding-top: 9.5px;
+}
