@@ -76,7 +76,7 @@ input {
 .footer {
     display: flex;
     justify-content: center;
-    margin: 50px 0px 0px 0px;
+    margin: 4rem;
 }
 
 .button1 {

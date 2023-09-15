@@ -56,10 +56,9 @@ class loginController extends Controller
                 return redirect ('/kegiatan-prodi');
             } else if ($mode === '8'){
                 return redirect ('/dosen-pa');
-            }
+            } else if ($mode === 'none');
             
-            // $url = env('API_SIAKAD') . "/api/as400/dataMahasiswa/" . $username . "/" . $token;
-            // $response = Http::get($url);
+            
 
           
             

@@ -1,3 +1,4 @@
+{{-- @dd($data->nama) --}}
 @extends("layouts.header")
 @section("navbar")
   <!DOCTYPE html>
@@ -39,33 +40,18 @@
                   </tr>
                 </thead>
                 <tbody>
+                  
+                  @foreach ($mhs as $data)
                   <tr>
-                    <td>1</td>
-                    <td>Yuda Nadhika</td>
-                    <td>Skripsi</td>
-                    <td>21120121130058</td>
-                    <td>Teknik Komputer 2021</td>
-                    <td>0129303123</td>
-                    <td>Belum Selesai</td>
+                    <td>{{ $loop->iteration}}</td>
+                    <td>{{ $data->nama }}</td>
+                    <td>{{ $data->nama_kegiatan }}</td>
+                    <td>{{ $data->nim }}</td>
+                    <td>{{ $data->nama_prodi }}</td>
+                    <td>{{ $data->whatsapp }}</td>
+                    <td>{{ $data->status }}</td>   
                   </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Raoul Habonaran</td>
-                    <td>Tesis</td>
-                    <td>21120121130053</td>
-                    <td>Teknik Komputer 2021</td>
-                    <td>1293012993</td>
-                    <td>Belum Selesai</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Muhammad Fadlan Daris</td>
-                    <td>Studi Independen</td>
-                    <td>21120121140054</td>
-                    <td>Teknik Komputer 2021</td>
-                    <td>1093012293</td>
-                    <td>Belum Selesai</td>
-                  </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>

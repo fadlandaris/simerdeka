@@ -32,4 +32,4 @@
   <div class="yield-navbar">
     @yield("navbar-prodi")
   </div>
-  <button class="logout"><i class="bx bx-log-out"></i> Logout</button>
+  <a href="/login" class="logout" style="text-decoration: none;" ><i class="bx bx-log-out" ></i> Logout</a>

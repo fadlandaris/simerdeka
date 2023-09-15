@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class RoleMiddleware
+class PodiMiddleware
 {
     // /**
     //  * Handle an incoming request.
@@ -20,7 +20,7 @@ class RoleMiddleware
 
     public function handle($request, Closure $next)
     {
-    // Periksa apakah pengguna memiliki role 2
+    // Periksa apakah pengguna memiliki role 2 prodi
     if (auth()->check() && auth()->user()->role === 2) {
         return $next($request);
     }

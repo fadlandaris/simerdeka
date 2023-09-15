@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIMERDEKA</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ URL::to('style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/b5f1e7184e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="{{ URL::to('css/login.css')}}">
 </head>
 <body style="background-image: url(img/latar.png)">
         
@@ -29,15 +29,8 @@
             @csrf
             <input type="text" placeholder="Username" name="username">
             <input type="password" placeholder="Password" name="password">
-            <div style="display: flex; justify-content:center;">
-            <button type="submit" class="button1">Masuk Prodi>
-            @if (auth()->check() && auth()->user()->role === 2)<a href="/kegiatan-prodi"></a>;  
-            @endif
-            </button>
-            <button type="submit" class="button1" >Masuk Dosen Pa </a>
-            </div>
-            <button type="submit" class="button" href="/loginMHS">Masuk Mahasiswa</a> </button>
-            <p style="margin-top: 30px; text-align:center; font-size:13.3px"><mark>* Silahkan masuk dengan email dan password yang sesuai dengan SIAKAD !</p>
+            <button type="submit" class="button" href="/loginMHS">Silahkan Masuk</a> </button>
+            <p style="margin-top: 30px; text-align:center; font-size:13.3px"><mark>* Silahkan masuk dengan username dan password yang sesuai dengan SIAKAD !</p>
         </form>
     </div>
 </div>

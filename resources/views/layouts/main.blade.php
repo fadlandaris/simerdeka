@@ -54,7 +54,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-        <a href="/home" class="nav-item nav-link {{ Request::is('home') ? 'active' : '' }}">Home</a>
+        <a href="/home-mahasiswa" class="nav-item nav-link {{ Request::is('home-mahasiswa*') ? 'active' : '' }}">Home</a>
         <div> 
         <a href="{{ $post[0]->category->slug }}" class="nav-item nav-link {{ Request::is('kegiatan-nonmbkm*') ? 'active' : '' }}">Kegiatan non-MBKM</a>  
         <div>
@@ -93,8 +93,8 @@
         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
         &copy; <a class="border-bottom" href="#" >UPT Teknologi Informasi dan Komunikasi (UPT TIK) UNJ</a>, All Right Reserved.
 
-        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-         Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/
+        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>-->
         </div>
         </div>
         </div>

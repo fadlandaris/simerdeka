@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DataMahasiswaController;
 use App\Models\Text;
 use App\Models\Category;
 use App\Http\Controllers\Home;
@@ -53,9 +54,7 @@ Route::get('/konversimatakuliah-prodi', function () {
     return view('konversi-prodi');
 });
 
-Route::get('/pendaftarkegiatan-prodi', function () {
-    return view('pendaftar-prodi');
-});
+Route::get('/pendaftarkegiatan-prodi', [DataMahasiswaController::class, 'index']);
 
 Route::get('/dosen-pa', function () {
     return view('dosen-pa');
