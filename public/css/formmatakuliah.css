@@ -1,0 +1,329 @@
+.matakuliahPopup details {
+  position: relative;
+  width: 300px;
+  margin-right: 1rem;
+}
+
+.matakuliahPopup details[open] {
+  z-index: 1;
+}
+
+.matakuliahPopup summary {
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #ddd;
+  list-style: none;
+}
+
+.matakuliahPopup summary::-webkit-details-marker {
+  display: none;
+}
+
+.matakuliahPopup details[open] summary:before {
+  content: "";
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.matakuliahPopup summary:after {
+  content: "";
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-bottom: 1px solid currentColor;
+  border-left: 1px solid currentColor;
+  border-bottom-left-radius: 2px;
+  transform: rotate(45deg) translate(50%, 0%);
+  transform-origin: center center;
+  transition: transform ease-in-out 100ms;
+}
+
+.matakuliahPopup summary:focus {
+  outline: none;
+}
+
+.matakuliahPopup details[open] summary:after {
+  transform: rotate(-45deg) translate(0%, 0%);
+}
+
+.matakuliahPopup ul {
+  width: 100%;
+  background: #ddd;
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  padding: 1rem;
+  margin: 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.matakuliahPopup li {
+  margin: 0;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.matakuliahPopup li:first-child {
+  padding-top: 0;
+}
+
+.matakuliahPopup li:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+/* FAKE SELECT */
+
+.matakuliahPopup summary.radios {
+  counter-reset: radios;
+}
+
+.matakuliahPopup summary.radios:before {
+  content: var(--selection);
+}
+
+.matakuliahPopup input[type="radio"] {
+  counter-increment: radios;
+  appearance: none;
+  display: none;
+}
+
+.matakuliahPopup input[type="radio"]:checked {
+  display: inline;
+  --display: block;
+}
+
+.matakuliahPopup input[type="radio"]:after {
+  content: attr(title);
+  display: inline;
+  font-size: 1rem;
+}
+
+.matakuliahPopup ul.list {
+  counter-reset: labels;
+}
+
+.matakuliahPopup label {
+  width: 100%;
+  display: flex;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.matakuliahPopup label span {
+  --display: none;
+  display: var(--display);
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid #727272;
+  border-radius: 3px;
+}
+
+.matakuliahPopup .dropbtn {
+  background-color: #04aa6d;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.matakuliahPopup .dropbtn:hover,
+.matakuliahPopup .dropbtn:focus {
+  background-color: #3e8e41;
+}
+
+.matakuliahPopup #myInput {
+  box-sizing: border-box;
+  background-image: url("searchicon.png");
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.matakuliahPopup #myInput:focus {
+  outline: 3px solid #ddd;
+}
+
+.matakuliahPopup .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.matakuliahPopup .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+.matakuliahPopup .dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.matakuliahPopup .dropdown a:hover {
+  background-color: #ddd;
+}
+
+.matakuliahPopup .show {
+  display: block;
+}
+
+/* Style for the overlay background */
+.matakuliahPopup .overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+/* Style for the registration form */
+.matakuliahPopup .popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  width: 500px;
+}
+
+.matakuliahPopup .popup h2 {
+  font-size: 15px;
+  margin-bottom: 3px;
+  margin-top: 3px;
+}
+
+/* Style for the close button */
+.matakuliahPopup .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+/* Style for form elements */
+.matakuliahPopup .form-group {
+  margin-bottom: 5px;
+  padding-top: 10px;
+  padding-right: 20px;
+}
+
+.matakuliahPopup .form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 10px;
+}
+
+.matakuliahPopup .form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 10px;
+}
+
+.matakuliahPopup .form-group input[type="submit"] {
+  background-color: #2dc03a;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  font-size: 10px;
+}
+
+.matakuliahPopup .matakuliah {
+  display: flex;
+  margin: 20px 0px;
+}
+
+.matakuliahPopup .container-matakuliah p {
+  padding: 2px 2px 2px 10px;
+}
+
+.matakuliahPopup .container-matakuliah {
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 50%;
+  height: 25vw;
+  overflow: scroll;
+  overflow-x: hidden;
+  position: absolute;
+  left: 105%;
+  bottom: 1%;
+  background-color: white;
+}
+
+.button-1 {
+  background-color: #2fa91e;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: auto;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-left: -3px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.button-1:hover,
+.button-1:focus {
+  background-color: #36ae27;
+}
+
+.matakuliahPopup .selects {
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 70%;
+  font-size: 11px;
+  margin-right: 18px;
+}
+
+/* .openPopupBtn {
+} */

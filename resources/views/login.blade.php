@@ -1,3 +1,4 @@
+{{-- @dd(session()->get('mode')) --}}
 <!DOCTYPE html>
 <html lang="en">
 {{-- @dd(session()->get('username'))   --}}
@@ -29,15 +30,18 @@
             <input type="text" placeholder="Username" name="username">
             <input type="password" placeholder="Password" name="password">
             <div style="display: flex; justify-content:center;">
-            <button type="submit" class="button1" >Masuk Prodi </a>
+            <button type="submit" class="button1">Masuk Prodi>
+            @if (auth()->check() && auth()->user()->role === 2)<a href="/kegiatan-prodi"></a>;  
+            @endif
+            </button>
             <button type="submit" class="button1" >Masuk Dosen Pa </a>
             </div>
             <button type="submit" class="button" href="/loginMHS">Masuk Mahasiswa</a> </button>
             <p style="margin-top: 30px; text-align:center; font-size:13.3px"><mark>* Silahkan masuk dengan email dan password yang sesuai dengan SIAKAD !</p>
-            
         </form>
     </div>
 </div>
+            
 <a class="footer" style="color: white; text-align: center; font-family:ubuntu;" href=""> © UPT Teknologi Informasi dan Komunikasi (UPT TIK) UNJ</a>
 
     

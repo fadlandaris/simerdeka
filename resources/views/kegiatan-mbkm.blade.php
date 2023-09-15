@@ -62,72 +62,105 @@
 </div>
 {{-- penjelasan program kegiatan selesai --}}
 
-
-{{-- pilih kegiatan --}}
-<div style="display: flex; justify-content:center" class="animated slideInDown">
+  
+<!-- table dan pilih kegiatan -->\
+<div class="animated slideInDown" style="margin-top: -2rem;">
   <div class="select">
-    <select name="format" id="format" class="selects">
-       <option selected disabled>Pilih Kegiatan Kampus Merdeka :</option>
-       <option value="pdf">Magang / Praktik Kerja</option>
-       <option value="txt">Asistensi Mengajar di Satuan Pendidikan</option>
-       <option value="epub">Penelitian / Riset</option>
-       <option value="fb2">Proyek Kemanusiaan</option>
-       <option value="mobi">Kegiatan Wirausahaan</option>
-       <option value="mobi">Studi / Proyek Independen</option>
-       <option value="mobi">Membangun Desa / KKN Tematik</option>
-       <option value="mobi">Bela Negara</option>
-       <option value="mobi">Pertukaran Pelajar</option>
-       <option value="mobi">Kegiatan Penelitian Reguler</option>
-    </select>
-  </div>
-  </div>
-  
-  <div style="display: flex; justify-content:center; margin-top:30px">
-    <a href="" class="btn btn-primary py-2 px-4 animated slideInDown">Daftar Sekarang <i class="fa fa-arrow-right ms-2"></i></a>
-  </div> 
-  {{-- pilih kegiatan selesai --}}
-
-  
-<!-- table -->
-<div style=" margin: 50px 0px 0px 0px">
-  <div class="div-box" >
-    <table id="example" class="display" style="width:100%">
-        <thead>
-          <tr >
-            <th>No</th>
-            <th>Nama Kegiatan</th>
-            <th>Nama Mahasiswa</th>
-            <th>NIM</th>
-            <th>Alamat Rumah Tinggal</th>
-            <th>Nomor Whatsapp</th>
-            <th class="tracking">Progress Tracker </th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach ($data as $data)
-          <tr>
-            <td>1</td>
-            <td>Tesis</td>
-            <td>{{ $nama }} </td>
-            <td>{!! session()->get('username') !!}</td>
-            <td>{{ $provinsi }}, {{ $kota }}, {{ $alamat }}, {{ $pos }}</td>
-            <td>{{ $nomorHp }}</td>
-            <td><div class="container-progress">
-                <ol class="progress-meter">
-                  <li class="progress-point done">Pengajuan</li><li class="progress-point done">Pemilihan Dosbing</li><li class="progress-point done">Pelaporan Nilai</li><li class="progress-point todo">Konversi KRS</li>
-                </ol>
-            </div>
-            </td>
-            <td>Belum Selesai</td>
-          </tr>
-          @endforeach
-      </table>
+    <select name="jenis-kegiatan" id="kegiatanDropdown">
+        <option value="none" selected disabled hidden>Pilih kegiatan Kampus Merdeka :</option>
+        @foreach ($kegiatanMBKM as $kegiatan)
+          <option value="{{ $kegiatan->kegiatan }}" >{{ $kegiatan->kegiatan }}</option>
+        @endforeach
+      </select>
     </div>
-  </div>
-      <script>
-        new DataTable('#example');
-      </script>
+</div>
+<div class="div-tambah">
+<button class="button-tambah btn btn-primary px-4 py-2"
+onclick="addData();">Daftar Kegiatan Sekarang</button>
+</div>
+
+<div class="table-container" >
+<p class="search-text">Search :  <input class="search-bar" id="myInput" type="text" placeholder="" onkeydown="searchTable()" /></p>
+<table id="myTable" style="width: 100%">
+  <thead>
+    <tr>
+      <th style="width: 10px">No</th>
+      <th>Nama <br />Mahasiswa / NIM</th>
+      <th style="width: 10rem;">Nama <br />Kegiatan</th>
+      <th>No. Whatsapp</th>
+      <th>Nama Prodi</th>
+      <th>Progresss Tracker</th>
+    </tr>
+  </thead>
+  <tbody id="table-body">
+    <tr>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- table dan pilih kegiatan selesai -->
+
+<script>
+  function searchTable() {
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those that don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[2]; // Change the index to the column you want to search
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+  let tableData = JSON.parse(localStorage.getItem("tableData")) || [];
+  renderData();
+
+  function renderData() {
+    let dataHTML = "";
+
+    for (i = 0; i < tableData.length; i++) {
+      const data = tableData[i];
+      const html = `
+      <tr>
+        <td>${i + 1}</td>
+        <td>{{ $nama }} / {!! session()->get('username') !!}</td>
+        <td>${data}</td>
+        <td>{{ $nomorHp }}</td>
+        <td>{{ $fakultas}} - {{ $prodi }} - {{ $jenjang }}</td>
+        <td> <div class="container-progress">
+              <ol class="progress-meter">
+                <li class="progress-point done">Pengajuan</li><li class="progress-point todo">Pemilihan Dosbing</li><li class="progress-point todo">Pelaporan Nilai</li><li class="progress-point todo">Konversi KRS</li>
+              </ol>
+          </div>
+        </td>
+      </tr>`;
+      dataHTML += html;
+    }
+    document.getElementById("table-body").innerHTML = dataHTML;
+  }
+
+  function addData() {
+    const inputElement = document.getElementById("kegiatanDropdown");
+    console.log(inputElement.value);
+    const name = inputElement.value;
+    if (name === "none") {
+      return;
+    } else {
+      tableData.push(name);
+      localStorage.setItem("tableData", JSON.stringify(tableData));
+      renderData();
+    }
+  }
+</script>
 </body>
 </html>
 @endsection

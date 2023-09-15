@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\loginController;
+use App\Models\Text;
+use App\Models\Category;
 use App\Http\Controllers\Home;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\kegiatanmbkm;
 use App\Http\Controllers\kegiatannonmbkm;
-use App\Models\Category;
-use App\Models\Text;
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\KegiatanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +20,8 @@ use App\Models\Text;
 |
 */
 Route::get('/login', [loginController::class, 'logins']);
-Route::post('/login', [loginController::class, 'loginMahasiswa']);
-Route::post('/login', [loginController::class, 'loginProdi']);
-Route::post('/login', [loginController::class, 'loginDosen']);
+Route::post('/login', [loginController::class, 'login']);
+
 
 
 
@@ -29,34 +29,45 @@ Route::get('/logins', function () {
     return view('falselogin');
 });
 
-// halaman home
-Route::get('/home', [Home::class, 'home']);
+// halaman home mahasiswa
+Route::get('/home-mahasiswa', [Home::class, 'home']);
     
 
 // halaman mbkm dan nionmbkm
 Route::get('/kegiatan-nonmbkm', [kegiatannonmbkm::class, 'kegiatannonmbkm']);
 Route::get( '/kegiatan-mbkm' , [kegiatanmbkm::class, 'kegiatanmbkm' ]);
-    
 
-// Route::middleware(['web'])->group(function () {
-    
-// })
 
-//kegiatan non mbkm
-// Route::prefix('/kegiatan-nonmbkm')->group(function () {
-//     Route::get('', function () {
-//         return view('kegiatan-nonmbkm',[
-//             "title" => "LAPORAN AKHIR STUDI"
-//         ]);
-//     });
-// });
+// Routes prodi
 
-//kegiatan mbkm
-// Route::prefix('/kegiatan-mbkm')->group(function () {
-//     Route::get('', function () {
-//         return view('kegiatan-mbkm',[
-//             "title" => "ASISTENSI MENGAJAR PENDIDIKAN"
-//         ]);
-//     });
-// });
+
+Route::get('/kegiatan-prodi', function () {
+    return view('kegiatanprodi-prodi');
+});
+
+Route::get('/kegiatanmerdeka-prodi', function () {
+    return view('kegiatanmerdeka-prodi');
+});
+
+Route::get('/konversimatakuliah-prodi', function () {
+    return view('konversi-prodi');
+});
+
+Route::get('/pendaftarkegiatan-prodi', function () {
+    return view('pendaftar-prodi');
+});
+
+Route::get('/dosen-pa', function () {
+    return view('dosen-pa');
+});
+
+Route::middleware(['role'])->group(function () {
+    // Rute-rute yang hanya dapat diakses oleh pengguna dengan role 2
+    Route::get('/contoh', 'ContohController@index');
+});
+
+
+
+
+
 

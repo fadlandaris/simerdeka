@@ -1,5 +1,5 @@
 {{-- @dd(session()->all()) --}}
-{{-- @dd($data) --}}
+{{-- @dd($kegiatan->find(1)->kegiatan ) --}}
 @extends('layouts.main')
 @section('navbar')
 <!DOCTYPE html>
@@ -65,17 +65,9 @@
     <div class="select">
       <select name="jenis-kegiatan" id="kegiatanDropdown">
           <option value="none" selected disabled hidden>Pilih kegiatan non-MBKM :</option>
-          <option>Laporan Akhir Studi</option>
-          <option>Tugas Akhir</option>
-          <option>Tesis</option>
-          <option>Disertasi</option>
-          <option>Kuliah Kerja Nyata</option>
-          <option>Kerja Praktek / PKL</option>
-          <option>Bimbingan Akademis</option>
-          <option>Aktivitas Kemahasiswaan</option>
-          <option>Program Kreativitas Mahasiswa</option>
-          <option>Skripsi</option>
-          <option>Kompetisi</option>
+          @foreach ($kegiatanprodi as $kegiatan)
+          <option value="{{ $kegiatan->kegiatan }}" >{{ $kegiatan->kegiatan }}</option>
+          @endforeach
         </select>
       </div>
   </div>
@@ -93,7 +85,7 @@
         <th>Nama <br />Mahasiswa / NIM</th>
         <th style="width: 10rem;">Nama <br />Kegiatan</th>
         <th>No. Whatsapp</th>
-        <th>Prodi</th>
+        <th>Nama Prodi</th>
         <th>Progresss Tracker</th>
       </tr>
     </thead>
@@ -140,7 +132,7 @@
           <td>{{ $nama }} / {!! session()->get('username') !!}</td>
           <td>${data}</td>
           <td>{{ $nomorHp }}</td>
-          <td>{{ $provinsi }}, {{ $kota }}, {{ $alamat }}, {{ $pos }}</td>
+          <td>{{ $fakultas}} - {{ $prodi }} - {{ $jenjang }}</td>
           <td> <div class="container-progress">
                 <ol class="progress-meter">
                   <li class="progress-point done">Pengajuan</li><li class="progress-point todo">Pemilihan Dosbing</li><li class="progress-point todo">Pelaporan Nilai</li><li class="progress-point todo">Konversi KRS</li>

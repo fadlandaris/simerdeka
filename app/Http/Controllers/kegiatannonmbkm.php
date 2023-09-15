@@ -8,8 +8,7 @@ use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\StoreTextRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Http\Requests\UpdateTextRequest;
-
-
+use App\Models\Kegiatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -23,6 +22,8 @@ class kegiatannonmbkm extends Controller
         // dd($url);
         $test = json_decode(Http::get($url));
         // dd($test->isi[0]);
+        $kegiatanprodi = Kegiatan::where('jenis_kegiatan', 1)->get('kegiatan');
+
 
         // $nama = $test->isi[0]->nama;
         // $kode = $test->isi[0]->kodeProdi;
@@ -32,20 +33,28 @@ class kegiatannonmbkm extends Controller
         return view('kegiatan-nonmbkm', [
             "title" => "Kegiatan non-MBKM",
             "post" => Text::all(),
+            "kegiatanprodi" => $kegiatanprodi,
             "data" => $test,
             "nama" => $test->isi[0]->namaLengkap,
             "alamat" => $test->isi[0]->alamat,
             "email" => $test->isi[0]->email,
             "nomorHp" => $test->isi[0]->telp,
-            "provinsi" => $test->isi[0]->namaPropinsi,
-            "kota" => $test->isi[0]->namaKabkot,
-            "lurah" => $test->isi[0]->lurah,
-            "pos" => $test->isi[0]->kdpos,
+            "prodi" => $test->isi[0]->namaProdi,
+            "jenjang" => $test->isi[0]->jenjangProdi,
+            "fakultas" => $test->isi[0]->namaFakultas,
             
+             
             
             
         ]);
 
+    }
+
+    public function getKegiatan(){
+        $kegiatan = Kegiatan::get();
+        return response()->json([
+            'kegiatan' => $kegiatan
+        ]);
     }
 
     // public function (Request $request)

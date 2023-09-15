@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Text;
 use App\Models\Category;
+use App\Models\Kegiatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Http\Requests\StoreTextRequest;
-use App\Http\Requests\UpdateTextRequest;
 
+use App\Http\Requests\UpdateTextRequest;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 
@@ -31,6 +32,7 @@ class kegiatanmbkm extends Controller
         $test = json_decode(Http::get($url));
         // dd($test->isi[0]);
 
+        $kegiatanMBKM = Kegiatan::where('jenis_kegiatan', 2)->get('kegiatan');
         // $nama = $test->isi[0]->nama;
         // $kode = $test->isi[0]->kodeProdi;
 
@@ -39,15 +41,15 @@ class kegiatanmbkm extends Controller
         return view('kegiatan-mbkm',[
             "title" => "Kegiatan MBKM",
             "post" => Text::all(),
+            "kegiatanMBKM" => $kegiatanMBKM,
             "data" => $test,
             "nama" => $test->isi[0]->namaLengkap,
             "alamat" => $test->isi[0]->alamat,
             "email" => $test->isi[0]->email,
             "nomorHp" => $test->isi[0]->telp,
-            "provinsi" => $test->isi[0]->namaPropinsi,
-            "kota" => $test->isi[0]->namaKabkot,
-            "lurah" => $test->isi[0]->lurah,
-            "pos" => $test->isi[0]->kdpos,
+            "prodi" => $test->isi[0]->namaProdi,
+            "jenjang" => $test->isi[0]->jenjangProdi,
+            "fakultas" => $test->isi[0]->namaFakultas,
         ]);
 
     }

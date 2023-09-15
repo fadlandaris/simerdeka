@@ -1,5 +1,5 @@
 {{-- @dd(session()->all('')) --}}
-{{-- {{ session()->get('username') }} --}}
+{{-- {{ session()->get('mode') }} --}}
 @extends('layouts.main')
 @section('navbar')
     
