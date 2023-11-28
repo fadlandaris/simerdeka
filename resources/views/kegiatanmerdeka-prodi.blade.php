@@ -6,8 +6,8 @@
     <head>
       <meta charset="UTF-8" />
       <title>SIMERDEKA</title>
-      <link href="{{ URL::to('css/kegiatan.css'); }}" rel="stylesheet">
-      <link href="{{ URL::to('css/style-2.css'); }}" rel="stylesheet" />
+      <link href="{{ URL::to("css/kegiatan.css") }}" rel="stylesheet">
+      <link href="{{ URL::to("css/style-2.css") }}" rel="stylesheet" />
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <!-- Boxiocns CDN Link -->
@@ -19,111 +19,124 @@
       <div class="content">
         <div class="content-kegiatan">
           <div class="content-header">
-            <h1 class="content-title">Kegiatan Prodi</h1>
+            <h1 class="content-title">Kegiatan Merdeka</h1>
           </div>
           <div class="content-flex">
             <div class="kegiatan">
               <img class="content-box-image" src="../img/kampusmerdeka.png">
-              <div class="a">Laporan Akhir Studi
+              <div class="a">Magang / Praktik Kerja
                 <p>Kegiatan Kampus merdeka yang akan dilakukan mahasiswa</p>
               </div>
               <div class="b">
                 <button class="button-68" id="tambah-1" role="button" onclick="openPopup('tambah-1', 'kurang-1');">Tambahkan</button>
                 <button class="button-69 disabled" id="kurang-1" role="button" disabled onclick="openPopup2('tambah-1', 'kurang-1');">Hilangkan</button>
-                <p class="sks"> Total SKS : 20</p>
+                <p class="sks"> Konversi Matakuliah : 20 SKS</p>
               </div>
             </div>
             <div class="kegiatan">
               <img class="content-box-image" src="../img/kampusmerdeka.png">
-              <div class="a">Bimbingan Akademis
+              <div class="a">Asistensi mengajar di Satuan Pendidikan
                 <p>Kegiatan Kampus merdeka yang akan dilakukan mahasiswa</p>
               </div>
               <div class="b">
                 <button class="button-68" id="tambah-2" role="button" onclick="openPopup('tambah-2', 'kurang-2');">Tambahkan</button>
                 <button class="button-69 disabled" id="kurang-2" role="button" disabled onclick="openPopup2('tambah-2', 'kurang-2');">Hilangkan</button>
-                <p class="sks"> Total SKS : 20</p>
+                <p class="sks"> Konversi Matakuliah : 20 SKS</p>
               </div>
             </div>
             <div class="kegiatan">
               <img class="content-box-image" src="../img/kampusmerdeka.png">
-              <div class="a">Tesis
+              <div class="a">Penelitian / Riset
                 <p>Kegiatan Kampus merdeka yang akan dilakukan mahasiswa</p>
               </div>
               <div class="b">
                 <button class="button-68" id="tambah-3" role="button" onclick="openPopup('tambah-3', 'kurang-3');">Tambahkan</button>
                 <button class="button-69 disabled" id="kurang-3" role="button" disabled onclick="openPopup2('tambah-3', 'kurang-3');">Hilangkan</button>
-                <p class="sks"> Total SKS : 20</p>
+                <p class="sks"> Konversi Matakuliah : 20 SKS</p>
               </div>
             </div>
 
             <div class="kegiatan">
               <img class="content-box-image" src="../img/kampusmerdeka.png">
-              <div class="a">Disertasi
+              <div class="a">Proyek Kemanusiaan
                 <p>Kegiatan Kampus merdeka yang akan dilakukan mahasiswa</p>
               </div>
               <div class="b">
                 <button class="button-68" id="tambah-4" role="button" onclick="openPopup('tambah-4', 'kurang-4');">Tambahkan</button>
                 <button class="button-69 disabled" id="kurang-4" role="button" disabled onclick="openPopup2('tambah-4', 'kurang-4');">Hilangkan</button>
-                <p class="sks"> Total SKS : 20</p>
+                <p class="sks"> Konversi Matakuliah : 20 SKS</p>
               </div>
             </div>
 
             <div class="kegiatan">
               <img class="content-box-image" src="../img/kampusmerdeka.png">
-              <div class="a">Skripsi
+              <div class="a">Kegiatan Wirausaha
                 <p>Kegiatan Kampus merdeka yang akan dilakukan mahasiswa</p>
               </div>
               <div class="b">
                 <button class="button-68" id="tambah-5" role="button" onclick="openPopup('tambah-5', 'kurang-5');">Tambahkan</button>
                 <button class="button-69 disabled" id="kurang-5" role="button" disabled onclick="openPopup2('tambah-5', 'kurang-5');">Hilangkan</button>
-                <p class="sks"> Total SKS : 20</p>
+                <p class="sks"> Konversi Matakuliah : 20 SKS</p>
               </div>
             </div>
 
             <div class="kegiatan">
               <img class="content-box-image" src="../img/kampusmerdeka.png">
-              <div class="a">Tugas Akhir
+              <div class="a">Studi / Proyek independen
                 <p>Kegiatan Kampus merdeka yang akan dilakukan mahasiswa</p>
               </div>
               <div class="b">
                 <button class="button-68" id="tambah-6" role="button" onclick="openPopup('tambah-6', 'kurang-6');">Tambahkan</button>
                 <button class="button-69 disabled" id="kurang-6" role="button" disabled onclick="openPopup2('tambah-6', 'kurang-6');">Hilangkan</button>
-                <p class="sks"> Total SKS : 20</p>
+                <p class="sks"> Konversi Matakuliah : 20 SKS</p>
               </div>
             </div>
 
             <div class="kegiatan">
               <img class="content-box-image" src="../img/kampusmerdeka.png">
-              <div class="a">Kerja Praktik / PKL
+              <div class="a">Membangun Desa / KKN Tematik
                 <p>Kegiatan Kampus merdeka yang akan dilakukan mahasiswa</p>
               </div>
               <div class="b">
                 <button class="button-68" id="tambah-7" role="button" onclick="openPopup('tambah-7', 'kurang-7');">Tambahkan</button>
                 <button class="button-69 disabled" id="kurang-7" role="button" disabled onclick="openPopup2('tambah-7', 'kurang-7');">Hilangkan</button>
-                <p class="sks"> Total SKS : 20</p>
+                <p class="sks"> Konversi Matakuliah : 20 SKS</p>
               </div>
             </div>
 
             <div class="kegiatan">
               <img class="content-box-image" src="../img/kampusmerdeka.png">
-              <div class="a">Kuliah Kerja Nyata
+              <div class="a">Kegiatan Peneliti
                 <p>Kegiatan Kampus merdeka yang akan dilakukan mahasiswa</p>
               </div>
               <div class="b">
                 <button class="button-68" id="tambah-8" role="button" onclick="openPopup('tambah-8', 'kurang-8');">Tambahkan</button>
                 <button class="button-69 disabled" id="kurang-8" role="button" disabled onclick="openPopup2('tambah-8', 'kurang-8');">Hilangkan</button>
-                <p class="sks"> Total SKS : 20</p>
+                <p class="sks"> Konversi Matakuliah : 20 SKS</p>
               </div>
             </div>
+
             <div class="kegiatan">
               <img class="content-box-image" src="../img/kampusmerdeka.png">
-              <div class="a">Program Kreativitas Mahasiswa
+              <div class="a">Bela Negara
+                <p>Kegiatan Kampus merdeka yang akan dilakukan mahasiswa</p>
+              </div>
+              <div class="b">
+                <button class="button-68" id="tambah-8" role="button" onclick="openPopup('tambah-8', 'kurang-8');">Tambahkan</button>
+                <button class="button-69 disabled" id="kurang-8" role="button" disabled onclick="openPopup2('tambah-8', 'kurang-8');">Hilangkan</button>
+                <p class="sks"> Konversi Matakuliah : 20 SKS</p>
+              </div>
+            </div>
+
+            <div class="kegiatan">
+              <img class="content-box-image" src="../img/kampusmerdeka.png">
+              <div class="a">Pertukaran Pelajar
                 <p>Kegiatan Kampus merdeka yang akan dilakukan mahasiswa</p>
               </div>
               <div class="b">
                 <button class="button-68" id="tambah-9" role="button" onclick="openPopup('tambah-9', 'kurang-9');">Tambahkan</button>
                 <button class="button-69 disabled" id="kurang-9" role="button" disabled onclick="openPopup2('tambah-9', 'kurang-9');">Hilangkan</button>
-                <p class="sks"> Total SKS : 20</p>
+                <p class="sks"> Konversi Matakuliah : 20 SKS</p>
               </div>
             </div>
             <div class="popup-notif" id="popup-notif">

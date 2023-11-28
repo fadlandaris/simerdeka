@@ -15,8 +15,9 @@ class MahasiswaMiddleware
      */
     public function handle($request, Closure $next)
     {
+        // dd(session()->get('mode'));
     // Periksa apakah pengguna memiliki role 9 Mahasiswa
-    if (auth()->check() && auth()->user()->role === 9) {
+    if (session()->get('mode') === "9") {
         return $next($request);
     }
 

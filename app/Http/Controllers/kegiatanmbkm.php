@@ -40,7 +40,6 @@ class kegiatanmbkm extends Controller
         
         return view('kegiatan-mbkm',[
             "title" => "Kegiatan MBKM",
-            "post" => Text::all(),
             "kegiatanMBKM" => $kegiatanMBKM,
             "data" => $test,
             "nama" => $test->isi[0]->namaLengkap,

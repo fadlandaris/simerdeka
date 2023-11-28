@@ -62,4 +62,4 @@
   <div class="yield-navbar">
     @yield("navbar")
   </div>
-  <a href="/login" class="logout" style="text-decoration: none;" ><i class="bx bx-log-out" ></i> Logout</a>
+  <a href="/logout" class="logout" style="text-decoration: none;" ><i class="bx bx-log-out" ></i> Logout</a>

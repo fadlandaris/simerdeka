@@ -56,12 +56,12 @@
         <div class="navbar-nav ms-auto p-4 p-lg-0">
         <a href="/home-mahasiswa" class="nav-item nav-link {{ Request::is('home-mahasiswa*') ? 'active' : '' }}">Home</a>
         <div> 
-        <a href="{{ $post[0]->category->slug }}" class="nav-item nav-link {{ Request::is('kegiatan-nonmbkm*') ? 'active' : '' }}">Kegiatan non-MBKM</a>  
+        <a href="/kegiatan-nonmbkm  " class="nav-item nav-link {{ Request::is('kegiatan-nonmbkm*') ? 'active' : '' }}">Kegiatan non-MBKM</a>  
         <div>
         </div>
         </div>
         <div>
-        <a href="{{ $post[0]->category->find(2)->slug }}" class="nav-item nav-link {{ Request::is('kegiatan-mbkm*') ? 'active' : '' }}">Kegiatan MBKM (KAMPUS MERDEKA)</a>
+        <a href="/kegiatan-mbkm" class="nav-item nav-link {{ Request::is('kegiatan-mbkm*') ? 'active' : '' }}">Kegiatan MBKM (KAMPUS MERDEKA)</a>
         <div>
         </div>
         </div>

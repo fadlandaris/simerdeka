@@ -1,5 +1,5 @@
 {{-- @dd(session()->all( )) --}}
-{{-- @dd($data) --}}
+{{-- @dd($kegiatanMBKM) --}}
 @extends('layouts.main')
 @section('navbar')
 <!DOCTYPE html>
@@ -47,26 +47,28 @@
   <div style=" width:30%; float:right;">
     <i class="fa fa-building fa-3x text-primary flex-shrink-0" style="margin: 0px 0px 20px 0px"></i>
     <p class="p-color"><b>Pengalaman Serta Pengembangan Dalam Dunia Kerja</b></p>
-    {!! $post->find(7)->body !!}
+    <p>Kegiatan Kampus Merdeka memiliki beberapa fungsi penting yang dirancang untuk meningkatkan <mark>kualitas pendidikan tinggi, mempersiapkan mahasiswa untuk tantangan dunia kerja, dan memberikan dampak positif pada masyarakat</mark></p>
   </div>
   <div style=" width:30%; float:left" class="wow fadeIn">
     <i class="fa fa-hands-praying fa-3x text-primary flex-shrink-0" style="margin: 0px 0px 20px 0px"></i>
     <p class="p-color"><b>Melatih Kemandirian dalam dunia Kerja dan Masyarakat</b></p>
-    {!! $post->find(5)->body !!}
+    <p>Kegiatan Kampus Merdeka adalah salah satu inisiatif pendidikan tinggi yang dicanangkan oleh pemerintah Indonesia. Inisiatif ini bertujuan untuk<mark>memberikan kemandirian dalam menghadapi tantangan di dunia kerja dan masyarakat.</mark></p>
   </div>
   <div style=" width:30%; margin: auto " class="wow fadeIn" >
     <i class="fa fa-chalkboard-user fa-3x text-primary flex-shrink-0" style="margin: 0px 0px 20px 0px"></i>
     <p class="p-color"><b>Mendapatkan Pengalaman yang Nyata Dalam Luar Kelas</b></p>
-    {!! $post->find(6)->body !!}
+    <p>Kampus Merdeka didasarkan pada pendekatan yang lebih fleksibel terhadap pendidikan tinggi, <mark>memungkinkan mahasiswa untuk memilih mata kuliah lintas disiplin dan mendapatkan pengalaman nyata di luar kelas.</mark></p>
   </div>
 </div>
 {{-- penjelasan program kegiatan selesai --}}
 
   
 <!-- table dan pilih kegiatan -->\
+<form method="POST" action="{{ route('tambahMahasiswa') }}">
+  @csrf
 <div class="animated slideInDown" style="margin-top: -2rem;">
   <div class="select">
-    <select name="jenis-kegiatan" id="kegiatanDropdown">
+    <select name="jenis_kegiatan" id="kegiatanDropdown">
         <option value="none" selected disabled hidden>Pilih kegiatan Kampus Merdeka :</option>
         @foreach ($kegiatanMBKM as $kegiatan)
           <option value="{{ $kegiatan->kegiatan }}" >{{ $kegiatan->kegiatan }}</option>
@@ -75,9 +77,11 @@
     </div>
 </div>
 <div class="div-tambah">
-<button class="button-tambah btn btn-primary px-4 py-2"
-onclick="addData();">Daftar Kegiatan Sekarang</button>
-</div>
+    
+    <input type="submit" value="Daftar Kegiatan Sekarang" class="button-tambah btn btn-primary px-4 py-2">
+    {{-- <button class="button-tambah btn btn-primary px-4 py-2" method="post" action="/tambah-mahasiswa">Daftar Kegiatan Sekarang</button> --}}
+  </div>
+</form>
 
 <div class="table-container" >
 <p class="search-text">Search :  <input class="search-bar" id="myInput" type="text" placeholder="" onkeydown="searchTable()" /></p>

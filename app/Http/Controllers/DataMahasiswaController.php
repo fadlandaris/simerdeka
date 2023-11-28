@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\dataMahasiswa;
 use App\Http\Requests\StoredataMahasiswaRequest;
 use App\Http\Requests\UpdatedataMahasiswaRequest;
+use Illuminate\Http\Request;
 
 class DataMahasiswaController extends Controller
 {
@@ -51,6 +52,30 @@ class DataMahasiswaController extends Controller
             
 
         
+    }
+
+    public function tambahMahasiswa (Request $request) {
+        //$inputData['nama_kegiatan'] = $request->get("jenis_kegiatan");
+        $datas = dataMahasiswa::all();
+        foreach($datas as $data){
+            //dd($data->nama_kegiatan);
+            if(session()->get('nama') === $data->nama && $request->get("jenis_kegiatan") === $data->nama_kegiatan){
+                
+                return redirect('/kegiatan-mbkm'); // popup messages tidka bisa menambah kegiatan
+            }
+        }
+        $inputData = dataMahasiswa::create([
+            'nama' => session()->get('nama'),
+            'nama_kegiatan' => $request->get("jenis_kegiatan"),
+            'nim'  => session()->get('username')
+        ]);
+
+        return redirect('/home-mahasiswa',302,[
+            'msg' => 'berhasil menambahkan data', // popup berhasil menambahkan kegiatan
+            'data' => $inputData,
+        ]);
+        
+
     }
 
     /**

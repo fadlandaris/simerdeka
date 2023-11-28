@@ -8,12 +8,12 @@
       <title>SIMERDEKA</title>
       <link href="{{ URL::to("css/formmatakuliah.css") }}" rel="stylesheet">
       <link href="{{ URL::to("css/style-2.css") }}" rel="stylesheet" />
+      <link href="{{ URL::to("css/tabel.css") }}" rel="stylesheet">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
       <link href="https://fonts.googleapis.com" rel="preconnect">
       <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-      <link href="{{ URL::to("css/tabel.css") }}" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=Ubuntu:wght@400;500&display=swap" rel="stylesheet">
       <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
       <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -25,6 +25,9 @@
       <section>
         <div class="content">
           <div class="content-box">
+            <div class="content-header">
+              <h1 class="content-title">Konversi Mata Kuliah</h1>
+            </div>
             <div class="tabel">
               <input class="search-bar" id="myInput" type="text" placeholder="Cari nama..." onkeydown="searchTable()" />
               <table id="myTable" style="width: 100%;">
@@ -34,38 +37,38 @@
                     <th>Nama <br>Mahasiswa</th>
                     <th>Nama <br>Kegiatan</th>
                     <th>NIM</th>
-                    <th>Jurusan - Angkatan</th>
+                    <th>Nama Prodi</th>
                     <th>No. HP</th>
                     <th>Konversi SKS </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr class="row-1">
                     <td>1</td>
-                    <td>Yuda Nadhika</td>
-                    <td>Skripsi</td>
-                    <td>21120121130058</td>
-                    <td>Teknik Komputer 2021</td>
-                    <td>081586900715</td>
-                    <td><button class="button-1" id="openPopupBtn">Konversi</button></td>
+                    <td class="js-nama">Yuda Nadhika</td>
+                    <td class="js-kegiatan">Skripsi</td>
+                    <td class="js-nim">21120121130058</td>
+                    <td class="js-prodi">Ilmu Komputer</td>
+                    <td class="js-nomorhp">081586900715</td>
+                    <td><button class="js-open-popup-btn button-1" onclick="copyText(1)">Konversi</button></td>
                   </tr>
-                  <tr>
+                  <tr class="row-2">
                     <td>2</td>
-                    <td>Raoul Habonaran</td>
-                    <td>Tesis</td>
-                    <td>21120121130053</td>
-                    <td>Teknik Komputer 2021</td>
-                    <td>1293012993</td>
-                    <td><button class="button-1" id="">Konversi Mata Kuliah</button></td>
+                    <td class="js-nama">Muhammad Fadlan Daris</td>
+                    <td class="js-kegiatan">Selobe</td>
+                    <td class="js-nim">2112012110981</td>
+                    <td class="js-prodi">Ilmu Komunikasi</td>
+                    <td class="js-nomorhp">081586912793</td>
+                    <td><button class="js-open-popup-btn button-1" onclick="copyText(2)">Konversi</button></td>
                   </tr>
-                  <tr>
+                  <tr class="row-3">
                     <td>3</td>
-                    <td>Muhammad Fadlan Daris</td>
-                    <td>Studi Independen</td>
-                    <td>21120121140054</td>
-                    <td>Teknik Komputer 2021</td>
-                    <td>1093012293</td>
-                    <td><button class="button-1" id="">Konversi Mata Kuliah</button></td>
+                    <td class="js-nama">Raoul Habonaran</td>
+                    <td class="js-kegiatan">Kerja Praktik</td>
+                    <td class="js-nim">21120122362342</td>
+                    <td class="js-prodi">Peternakan</td>
+                    <td class="js-nomorhp">0812381381395</td>
+                    <td><button class="js-open-popup-btn button-1" onclick="copyText(3)">Konversi</button></td>
                   </tr>
                 </tbody>
               </table>
@@ -81,19 +84,23 @@
           <h2>Konversi Mata Kuliah</h2>
           <div class="form-group">
             <label for="username">Kegiatan:</label>
-            <input id="username" name="username" type="text" placeholder="Kerja Praktik" disabled required />
+            <input class="js-target-kegiatan" type="text" placeholder="" disabled />
           </div>
           <div class="form-group">
             <label for="email">Nama Mahasiswa:</label>
-            <input id="email" name="email" type="email" placeholder="Bintang Mahesa Pangestu" disabled required />
+            <input class="js-target-nama" type="text" placeholder="" disabled />
           </div>
           <div class="form-group">
-            <label for="email">Alamat Rumah Tinggal:</label>
-            <input id="email" name="email" type="email" placeholder="Jl. Jati Pakis no.9, Jati, Pulo Gadung, Jakarta Timur" disabled required />
+            <label for="email">Nim:</label>
+            <input class="js-target-nim" type="text" placeholder="" disabled />
+          </div>
+          <div class="form-group">
+            <label for="email">Prodi:</label>
+            <input class="js-target-prodi" type="text" placeholder="" disabled required />
           </div>
           <div class="form-group">
             <label for="email">No Handphone:</label>
-            <input id="email" name="email" type="email" placeholder="081586900715" disabled required />
+            <input class="js-target-nomorhp" type="text" placeholder="" disabled required />
           </div>
 
           <div class="matakuliah">
@@ -104,18 +111,32 @@
             </button>
           </div>
           <div class="container-matakuliah">
-            <h4 style="background-color: rgb(220, 220, 220); padding: 10px; margin-bottom: 10px">Mata Kuliah yang Dipilih</h4>
-            <div class="js-generate-html"></div>
+            <div class="js-generate-html">
+              <table id="matkulTable" style="width: 100%">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Mata Kuliah</th>
+                    <th>SKS</th>
+                  </tr>
+                </thead>
+                <tbody id="table-body">
+                  <tr></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
           <div class="form-group">
-            <input type="submit" value="Tambahkan Konversi SKS" />
+            <span><input type="submit" value="Tambahkan Konversi SKS" /></span>
           </div>
 
         </div>
       </div>
 
       <script>
+        let selectorPopup;
+
         function searchTable() {
           input = document.getElementById("myInput");
           filter = input.value.toUpperCase();
@@ -145,25 +166,46 @@
         }
         let sidebar = document.querySelector(".sidebar");
         let sidebarBtn = document.querySelector(".bx-menu");
-        console.log(sidebarBtn);
         sidebarBtn.addEventListener("click", () => {
           sidebar.classList.toggle("close");
         });
 
-        function renderMatakuliah() {
-          let todoListHTML = "";
+        let data = [];
+
+        function renderMatakuliah(type) {
+          let dataMatkulHTML = "";
 
           for (let i = 0; i < data.length; i++) {
-            const matakuliah = data[i];
-            const html = `<p>${matakuliah}<p>`;
+            const html = `
+              <tr>
+                <td>${i + 1}</td>
+                <td>${data[i]}</td>
+                <td><button 
+                  class="delete-matkul-button"
+                  onclick="
+                    hapusMatakuliah(${i});
+                    renderMatakuliah(${type});
+                  "
+                >
+                  Delete
+                </button></td>
+              </tr>`;
 
-            todoListHTML += html;
-            localStorage.setItem("html", "html.value"); //penting
+            dataMatkulHTML += html;
           }
-          document.querySelector(".js-generate-html").innerHTML = todoListHTML;
+          document.getElementById("table-body").innerHTML = dataMatkulHTML;
         }
 
-        const data = [];
+        function hapusMatakuliah(i) {
+          const name = data[i];
+          data.splice(i, 1);
+          document.querySelectorAll(".js-matakuliah-input option").forEach(opt => {
+            if (opt.value === name) {
+              opt.disabled = false;
+              document.getElementById("none").selected = true;
+            }
+          });
+        }
 
         function tambahkanMatakuliah() {
           const inputElement = document.querySelector(".js-matakuliah-input");
@@ -178,10 +220,10 @@
             }
           });
 
-          renderMatakuliah();
+          renderMatakuliah(selectorPopup);
         }
 
-        var arr = ["Dasar Komputer Pemrograman", "Pemrograman Berorientasi Objek", "Rekayasa Perangkat Lunak", "Pemrograman Perangkat Bergerak", ""];
+        var arr = ["Dasar Komputer Pemrograman", "Pemrograman Berorientasi Objek", "Rekayasa Perangkat Lunak", "Pemrograman Perangkat Bergerak"];
         var options = `<option value="none" id="none" selected disabled hidden>Pilih kegiatan</option>`;
         arr.map((op, i) => {
           options += `<option value="${op}" id="${i}">${op}</option>`;
@@ -192,46 +234,69 @@
           document.getElementById(i).disabled = true;
         }
 
-        const openPopupBtn = document.getElementById("openPopupBtn");
+
+        const openPopupButtons = document.querySelectorAll('.js-open-popup-btn');
         const overlay = document.getElementById("overlay");
         const popup = document.getElementById("popup");
         const closeBtn = document.getElementById("closeBtn");
 
-        openPopupBtn.addEventListener("click", () => {
-          overlay.style.display = "block";
-          popup.style.display = "block";
+        // Add a click event listener to each button
+        openPopupButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            overlay.style.display = "block";
+            popup.style.display = "block";
+          });
         });
 
         closeBtn.addEventListener("click", () => {
           overlay.style.display = "none";
           popup.style.display = "none";
+          data = [];
+          document.querySelectorAll(".js-matakuliah-input option").forEach(opt => {
+            opt.disabled = false;
+            document.getElementById("none").selected = true;
+          });
         });
 
         // Close the popup when clicking outside the form
-        overlay.addEventListener("click", () => {
-          overlay.style.display = "none";
-          popup.style.display = "none";
-        });
+          overlay.addEventListener("click", () => {
+            overlay.style.display = "none";
+            popup.style.display = "none";
+            data = [];
+            document.querySelectorAll(".js-matakuliah-input option").forEach(opt => {
+              opt.disabled = false;
+              document.getElementById("none").selected = true;
+            });
+          });
 
-        // function sksFunction() {
-        //   document.getElementById("myDropdown").classList.toggle("show");
-        // }
+        function copyText(numbers) {
+          selectorPopup = numbers;
+          const rowSelector = `.row-${numbers}`;
+          const row = document.querySelector(rowSelector);
+          const popup = document.getElementById("popup");
 
-        // function filterFunction() {
-        //   var input, filter, ul, li, a, i;
-        //   input = document.getElementById("myInput");
-        //   filter = input.value.toUpperCase();
-        //   div = document.getElementById("myDropdown");
-        //   a = div.getElementsByTagName("a");
-        //   for (i = 0; i < a.length; i++) {
-        //     txtValue = a[i].textContent || a[i].innerText;
-        //     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        //       a[i].style.display = "";
-        //     } else {
-        //       a[i].style.display = "none";
-        //     }
-        //   }
-        // }
+          if (row && popup) {
+
+            let targetNamaElem = popup.querySelector('.js-target-nama');
+            let targetKegiatanElem = popup.querySelector('.js-target-kegiatan');
+            let targetNimElem = popup.querySelector('.js-target-nim');
+            let targetProdiElem = popup.querySelector('.js-target-prodi');
+            let targetNomorhpElem = popup.querySelector('.js-target-nomorhp');
+
+            let namaElem = row.querySelector('.js-nama').innerHTML;
+            let kegiatanElem = row.querySelector('.js-kegiatan').innerHTML;
+            let nimElem = row.querySelector('.js-nim').innerHTML;
+            let prodiElem = row.querySelector('.js-prodi').innerHTML;
+            let nomorhpElem = row.querySelector('.js-nomorhp').innerHTML;
+
+            targetNamaElem.placeholder = namaElem;
+            targetKegiatanElem.placeholder = kegiatanElem;
+            targetNimElem.placeholder = nimElem;
+            targetProdiElem.placeholder = prodiElem;
+            targetNomorhpElem.placeholder = nomorhpElem;
+          }
+          renderMatakuliah(numbers);
+        }
       </script>
     @endsection
   </body>

@@ -8,6 +8,7 @@ use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\StoreTextRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Http\Requests\UpdateTextRequest;
+use App\Models\dataMahasiswa;
 use App\Models\Kegiatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -23,16 +24,16 @@ class kegiatannonmbkm extends Controller
         $test = json_decode(Http::get($url));
         // dd($test->isi[0]);
         $kegiatanprodi = Kegiatan::where('jenis_kegiatan', 1)->get('kegiatan');
+        $dataMahasiswa = dataMahasiswa::where('nama',session()->get('nama'))->get();
 
 
-        // $nama = $test->isi[0]->nama;
+        // $nama = $test->isi[0]->nama; 
         // $kode = $test->isi[0]->kodeProdi;
 
         // dd($kode);
 
         return view('kegiatan-nonmbkm', [
             "title" => "Kegiatan non-MBKM",
-            "post" => Text::all(),
             "kegiatanprodi" => $kegiatanprodi,
             "data" => $test,
             "nama" => $test->isi[0]->namaLengkap,
@@ -42,6 +43,7 @@ class kegiatannonmbkm extends Controller
             "prodi" => $test->isi[0]->namaProdi,
             "jenjang" => $test->isi[0]->jenjangProdi,
             "fakultas" => $test->isi[0]->namaFakultas,
+            "datamahasiswa" => $dataMahasiswa,
             
              
             

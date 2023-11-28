@@ -25,6 +25,9 @@
       <section>
         <div class="content">
           <div class="content-box">
+            <div class="content-header">
+              <h1 class="content-title">Konfirmasi Pembimbing</h1>
+            </div>
             <div class="tabel">
               <input class="search-bar" id="myInput" type="text" placeholder="Cari nama..." onkeydown="searchTable()" />
               <table id="myTable" style="width: 100%;">

@@ -18,7 +18,7 @@ class Home extends Controller
 
         // dd(session()->all());    
         return view('home', [
-            "post" => Text::all(),
+            
         ]);
         
     }

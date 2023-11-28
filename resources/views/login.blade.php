@@ -35,7 +35,7 @@
     </div>
 </div>
             
-<a class="footer" style="color: white; text-align: center; font-family:ubuntu;" href=""> © UPT Teknologi Informasi dan Komunikasi (UPT TIK) UNJ</a>
+<a style="color: white; text-align: center; font-family:ubuntu; display:flex; justify-content:center; margin-top: 6rem" href=""> © UPT Teknologi Informasi dan Komunikasi (UPT TIK) UNJ</a>
 
     
 </body>

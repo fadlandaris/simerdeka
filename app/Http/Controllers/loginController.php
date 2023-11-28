@@ -63,11 +63,17 @@ class loginController extends Controller
           
             
         } 
-        
         // jika gagal
         return redirect('/logins');
 
         
     }
+    public function logout(Request $request){
+        $username = session()->get('username');
+        $request->session()->forget($username);
 
+        return redirect('/login');
+    }
+
+    //getDataMahasiswaAuth
 };   

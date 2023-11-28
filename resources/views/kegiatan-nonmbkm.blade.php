@@ -45,25 +45,27 @@
     <div style=" width:30%; float:right;">
       <i class="fa fa-book fa-3x text-primary flex-shrink-0" style="margin: 0px 0px 20px 0px"></i>
       <p class="p-color"><b>Memperdalam Pemahaman tentang Materi Pembelajaran</b></p>
-      {!! $post->find(1)->body !!}
+      <p>Kegiatan seperti Bimbingan akademis, Aktivitas kemahasiswaan, dan Tugas Akhir <mark> membantu mahasiswa memperdalam pemahaman mereka tentang materi pelajaran dan tren terbaru dalam disiplin ilmu tertentu.</mark></p>
     </div>
     <div style=" width:30%; float:left" class="wow fadeIn">
       <i class="fa fa-user-graduate fa-3x text-primary flex-shrink-0" style="margin: 0px 0px 20px 0px"></i>
       <p class="p-color"><b>Kepentingan Pendidikan yang Harus Diselesaikan</b></p>
-      {!! $post->find(2)->body !!}
+      <p>Kegiatan di universitas meliputi berbagai aktivitas yang dilakukan oleh mahasiswa, dosen, dan staf universitas untuk <mark> pendidikan, pengembangan pribadi, penelitian, dan kontribusi terhadap masyarakat.</mark></p>
     </div>
     <div style=" width:30%; margin: auto " class="wow fadeIn" >
       <i class="fa fa-user-plus fa-3x text-primary flex-shrink-0" style="margin: 0px 0px 20px 0px"></i>
       <p class="p-color"><b>Pengembangan Diri Meliputi Akademik</b></p>
-      {!! $post->find(3)->body !!}
+      <p>Kegiatan di lingkungan universitas memiliki berbagai fungsi yang penting untuk mendukung<mark> pengembangan akademik, sosial, dan pribadi para mahasiswa,</mark> serta untuk memajukan institusi universitas secara keseluruhan</p>
     </div>
 </div>
 {{-- penjelasan program kegiatan selesai --}}
   
   <!-- table dan pilih kegiatan -->\
+  <form method="POST" action="{{ route('tambahMahasiswa') }}">
+    @csrf
   <div class="animated slideInDown" style="margin-top: -2rem;">
     <div class="select">
-      <select name="jenis-kegiatan" id="kegiatanDropdown">
+      <select name="jenis_kegiatan" id="kegiatanDropdown">
           <option value="none" selected disabled hidden>Pilih kegiatan non-MBKM :</option>
           @foreach ($kegiatanprodi as $kegiatan)
           <option value="{{ $kegiatan->kegiatan }}" >{{ $kegiatan->kegiatan }}</option>
@@ -72,9 +74,10 @@
       </div>
   </div>
   <div class="div-tambah">
-  <button class="button-tambah btn btn-primary px-4 py-2"
-  onclick="addData();">Daftar Kegiatan Sekarang</button>
-</div>
+  <input type="submit" value="Daftar Kegiatan Sekarang" class="button-tambah btn btn-primary px-4 py-2">
+  {{-- <button class="button-tambah btn btn-primary px-4 py-2">Daftar Kegiatan Sekarang</button> --}}
+</div>  
+</form>
 
 <div class="table-container" >
   <p class="search-text">Search :  <input class="search-bar" id="myInput" type="text" placeholder="" onkeydown="searchTable()" /></p>
@@ -89,6 +92,21 @@
         <th>Progresss Tracker</th>
       </tr>
     </thead>
+    <tr>
+      @foreach ($datamahasiswa as $data)
+      <td>{{ $loop->iteration}}</td>
+      <td>{{ $data->nama }} / {!! $data->nim !!}</td>
+      <td>{{ $data->nama_kegiatan }}</td>
+      <td>{{ $nomorHp }}</td>
+      <td>{{ $fakultas}} - {{ $prodi }} - {{ $jenjang }}</td>
+      <td> <div class="container-progress">
+            <ol class="progress-meter">
+              <li class="progress-point done">Pengajuan</li><li class="progress-point todo">Pemilihan Dosbing</li><li class="progress-point todo">Pelaporan Nilai</li><li class="progress-point todo">Konversi KRS</li>
+            </ol>
+        </div>
+      </td>
+    </tr>
+    @endforeach
     <tbody id="table-body">
       <tr>
       </tr>
@@ -142,7 +160,7 @@
         </tr>`;
         dataHTML += html;
       }
-      document.getElementById("table-body").innerHTML = dataHTML;
+      document.getElementById("").innerHTML = dataHTML;
     }
 
     function addData() {

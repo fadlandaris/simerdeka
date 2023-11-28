@@ -9,6 +9,7 @@ use App\Http\Controllers\kegiatanmbkm;
 use App\Http\Controllers\kegiatannonmbkm;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\KegiatanController;
+use App\Http\Middleware\MahasiswaMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ use App\Http\Controllers\KegiatanController;
 Route::get('/login', [loginController::class, 'logins']);
 Route::post('/login', [loginController::class, 'login']);
 
-
+Route::get('/logout', [loginController::class, 'logout']);
 
 
 Route::get('/logins', function () {
@@ -60,9 +61,9 @@ Route::get('/dosen-pa', function () {
     return view('dosen-pa');
 });
 
-Route::middleware(['role'])->group(function () {
+Route::middleware(['mahasiswa'])->group(function () {
     // Rute-rute yang hanya dapat diakses oleh pengguna dengan role 2
-    Route::get('/contoh', 'ContohController@index');
+    Route::post('/tambah-mahasiswa', [DataMahasiswaController::class, 'tambahMahasiswa'])->name('tambahMahasiswa');
 });
 
 
